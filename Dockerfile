@@ -1,11 +1,12 @@
-FROM microsoft/dotnet:sdk AS build-env
-WORKDIR /Docker
+# syntax=docker/dockerfile:1
 
-RUN dotnet restore
-COPY . ./
-RUN dotnet publish -c Release -o out
+FROM python:3.8-slim-buster
 
-FROM microsoft/dotnet:aspnetcore-runtime
-WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+WORKDIR /python-docker
+
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
+COPY . .
+
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
