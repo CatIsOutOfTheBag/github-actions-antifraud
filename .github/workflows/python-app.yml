@@ -57,7 +57,7 @@ jobs:
     - name: Push the Docker container
       run: |
         docker login
-        docker push my_docker_repo/my-app-dotnet
+        docker push my-app-dotnet
       
 
 
