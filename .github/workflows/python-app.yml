@@ -54,7 +54,7 @@ jobs:
           #username: CatIsOutOfTheBag
           #password: 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
           username: ${{ github.repository_owner }}
-          password: ${{ GITHUB_TOKEN }}
+          password: ${{ GitHub_TOKEN }}
           
       - name: Build image
         uses: docker/build-push-action@v2
