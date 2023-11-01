@@ -51,7 +51,9 @@ jobs:
       #run: docker build . --file Dockerfile --tag my-app-dotnet:$(date +%s)
       run: docker build . --file Dockerfile --tag my-app-dotnet
     - name: Push the Docker container
-      run: docker push my-app-dotnet
+      run: |
+        docker login
+        docker push my-app-dotnet
       
 
 
