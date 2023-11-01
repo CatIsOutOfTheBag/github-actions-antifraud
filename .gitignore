@@ -1,0 +1,16 @@
+myvenv/
+__pycache__/
+Activate.ps1
+activate
+activate.bat
+deactivate.bat
+easy_install-3.7.exe
+easy_install.exe
+flask.exe
+pip.exe
+pip3.7.exe
+pip3.exe
+py.test.exe
+pytest.exe
+python.exe
+pythonw.exe
