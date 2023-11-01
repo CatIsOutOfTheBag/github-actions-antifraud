@@ -46,34 +46,40 @@ jobs:
     
     runs-on: ubuntu-latest
     
-    steps:     
+    steps:    
+      - name: Check out
+        uses: actions/checkout@v2
+        
+      - name: Docker meta
+        id: docker_meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          images: ghcr.io/CatIsOutOfTheBag/rgapi
+          tag-sha: true
+          tag-edge: false
+          tag-latest: true
+          
       - name: Login to GHCR
         uses: docker/login-action@v1
         with:
           registry: ghcr.io         
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.MY_TOKEN }}
-      
-     # - name: PAT
-    #    run: export CR_PAT=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
-
-      #- name: Login to GHCR
-      #  run: echo $CR_PAT | docker login ghcr.io -u CatIsOutOfTheBag –password-stdin
-          
+          password: ${{ secrets.MY_TOKEN }}      
+    
       - name: Build image
         uses: docker/build-push-action@v2
         with:
           tags: ${{ steps.docker_meta.outputs.tags }} 
           file: ./Dockerfile
           
-      - name: Monitor image for vulnerabilities with Snyk
-        uses: snyk/actions/docker@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK }}
-        with:
-          command: monitor
-          image: "ghcr.io/CatIsOutOfTheBag/rgapi:main"
-          args: --file=Dockerfile --project-name=rgapi 
+      #- name: Monitor image for vulnerabilities with Snyk
+      #  uses: snyk/actions/docker@master
+      #  env:
+      #    SNYK_TOKEN: ${{ secrets.SNYK }}
+      #  with:
+      #    command: monitor
+      #    image: "ghcr.io/CatIsOutOfTheBag/rgapi:main"
+      #    args: --file=Dockerfile --project-name=rgapi 
           
       - name: Push image
         uses: docker/build-push-action@v2
