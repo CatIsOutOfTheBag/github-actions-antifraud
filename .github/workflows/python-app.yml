@@ -52,7 +52,7 @@ jobs:
         
       - name: Docker meta
         id: docker_meta
-        uses: olga/ghaction-docker-meta@v1
+        uses: ghaction-docker-meta@v1
         with:
           images: ghcr.io/CatIsOutOfTheBag/rgapi
           tag-sha: true
