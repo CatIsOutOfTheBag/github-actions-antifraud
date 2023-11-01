@@ -57,9 +57,10 @@ jobs:
       #    password: ${{ GitHub_TOKEN }}
       
       - name: PAT
-        run: |
-          export CR_PAT=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
-          echo $CR_PAT | docker login ghcr.io -u CatIsOutOfTheBag –password-stdin
+        run: export CR_PAT=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
+
+      - name: Login to GHCR
+        run: echo $CR_PAT | docker login ghcr.io -u CatIsOutOfTheBag –password-stdin
           
       - name: Build image
         uses: docker/build-push-action@v2
