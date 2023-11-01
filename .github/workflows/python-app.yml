@@ -47,7 +47,7 @@ jobs:
     steps:
       - name: Build the Docker image     
         run: docker build . --file Dockerfile --tag my-app-dotnet
-      - name: Push the Docker container
+      - name: Login
         run: |
           docker login
           docker push my-app-dotnet
