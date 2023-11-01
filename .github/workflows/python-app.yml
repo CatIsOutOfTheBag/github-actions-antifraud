@@ -52,8 +52,8 @@ jobs:
     steps:    
     - uses: actions/checkout@v3
     
-    - name: Docker login
-      run: docker login --username CatIsOutOfTheBag --password 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 ghcr.io
+    - name: Docker login         ​
+      run: docker login --username CatIsOutOfTheBag --password-stdin
    
     - name: Build the Docker image
       run: docker build . -t ghcr.io/CatIsOutOfTheBag/my-app:latest
