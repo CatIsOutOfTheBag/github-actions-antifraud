@@ -50,11 +50,9 @@ jobs:
       - name: Login to GHCR
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
-          #username: CatIsOutOfTheBag
-          #password: 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
+          registry: ghcr.io         
           username: ${{ github.repository_owner }}
-          password: ${{ MY_TOKEN }}
+          password: MY_TOKEN
       
      # - name: PAT
     #    run: export CR_PAT=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
