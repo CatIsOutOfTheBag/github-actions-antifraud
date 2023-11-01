@@ -44,35 +44,13 @@ jobs:
         
   container:
     runs-on: ubuntu-latest
-    #permissions:
-    #  contents: read
-    #  packages: write
-    #  id-token: write
-    
-    steps:    
-    - uses: actions/checkout@v3  
-    
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.MY_TOKEN }}
-
-    - name: Build the Docker image
-      run: docker build . -t ghcr.io/CatIsOutOfTheBag/my-app:latest
-   
-    - name: Push the Docker container
-      run: docker push ghcr.io/CatIsOutOfTheBag/my-app:latest
-    
-    
-    #- name: Build the Docker image
-      #run: docker build . --file Dockerfile --tag my-app-dotnet:$(date +%s)
-     # run: docker build . --file Dockerfile --tag my-app-dotnet
-    #- name: Push the Docker container
-    #  run: |
-    #    docker login
-    #    docker push my-app-dotnet
+    steps:
+      - name: Build the Docker image     
+        run: docker build . --file Dockerfile --tag my-app-dotnet
+      - name: Push the Docker container
+        run: |
+          docker login
+          docker push my-app-dotnet
       
 
 
