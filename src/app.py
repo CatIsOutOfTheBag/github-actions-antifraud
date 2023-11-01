@@ -11,6 +11,9 @@ CORS(app)
 # creating an API object
 api = Api(app)
 
+def index():
+    return "Hello!"
+
 #prediction api call
 class prediction(Resource):
     def get(self,number):
