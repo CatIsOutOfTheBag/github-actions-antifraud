@@ -46,6 +46,32 @@
 
    <image src="7. pack.jpg" alt="1">
 
+## По практикуму от Яндекс 
+https://github.com/golodnyj/practicum-k8s/tree/master
 
+1. Создана виртуальная машина
+2. На нее с помощью git clone склонирован этот репозиторий
+3. Настроена утилита yc
+4. Развернут кластер PostgreSQL (вручную, Terraform не работает в РФ)
+5. Развернут кластер K8S и группа узлов к нему
+6. Добавлены необходимые переменные окружения: $FOLDER_ID, $REPO, $DATABASE_URI, $DATABASE_HOSTS, K8S_ID
+7. Создано Container Registry
+   
+   <image src="1.jpg" alt="1">
+   
+8. Собран и загружен докер-образ
+
+   <image src="2.jpg" alt="1">
+   <image src="21.jpg" alt="1">
+   
+9. Равернуто приложение и балансировщик нагрузки: yaml сценарии по ссылке в репозитории Яндекса
+10. При развертывании указаны креды действующего кластера Postgre и K8S
+
+    <image src="3.jpg" alt="1">
+    
+11. Проверена работа приложения через внешний URL (поле LoadBalancer Ingress) балансировщика
+
+    <image src="4.jpg" alt="1">
+    <image src="5.jpg" alt="1">
 
   
