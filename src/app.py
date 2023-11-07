@@ -11,6 +11,9 @@ CORS(app)
 # creating an API object
 api = Api(app)
 
+# инициализация модели
+model = pickle.load(open('dump.pkl', 'rb'))
+
 def index():
     return "Hello!"
 
@@ -20,9 +23,7 @@ class prediction(Resource):
 
         row_df = pd.DataFrame.from_dict({'tx_amount': [number+random.randint(0,10)],
                         'tx_time_seconds': [number+random.randint(0,10)],
-                        'tx_time_days': [number+random.randint(0,10)]})        
-                
-        model = pickle.load(open('dump.pkl', 'rb'))
+                        'tx_time_days': [number+random.randint(0,10)]})   
         prediction = model.predict(row_df)       
         return str(prediction)
 
